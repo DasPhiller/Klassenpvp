@@ -16,8 +16,8 @@ public class PlayerManagerMixin {
 
     @Inject(method = "onPlayerConnect", at = @At("HEAD"))
     public void onPlayerConnect(ClientConnection connection, ServerPlayerEntity player, ConnectedClientData clientData, CallbackInfo ci) {
-        if (PlayerLivesKt.getConfigValue(player.getName().toString()) == null) {
-            PlayerLivesKt.saveConfig(player.getName().toString(), 3);
+        if (PlayerLivesKt.getConfigValue(player.getUuid()) == null) {
+            PlayerLivesKt.saveConfig(player.getUuid(), 3);
         }
         UtilsKt.sendActionBar(player);
     }

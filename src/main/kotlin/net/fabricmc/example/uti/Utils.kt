@@ -8,8 +8,8 @@ import net.silkmc.silk.core.text.literalText
 import kotlin.time.Duration.Companion.seconds
 
 fun sendActionBar(player: ServerPlayerEntity) {
-    infiniteMcCoroutineTask(false, period = 1.seconds) {
-        player.sendMessage(literalText("${getConfigValue(player.name.string)}♥"), true)
+    infiniteMcCoroutineTask(true, period = 1.seconds) {
+        player.sendMessage(literalText("${getConfigValue(player.uuid)} ♥"), true)
         if (player.isDisconnected) {
             cancel()
         }
