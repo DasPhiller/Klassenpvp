@@ -24,6 +24,7 @@ dependencies {
     modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin_version")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api_version")}")
     modImplementation("net.silkmc:silk-core:1.10.7")
+    modImplementation("net.silkmc:silk-commands:1.10.7")
 }
 
 loom {

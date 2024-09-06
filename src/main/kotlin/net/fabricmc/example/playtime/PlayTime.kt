@@ -1,34 +1,32 @@
 package net.fabricmc.example.playtime
 
-import net.minecraft.server.network.ServerPlayerEntity
 import java.io.File
 import java.util.*
 
-fun savePlayConfig(key: UUID, value: Int) {
-    val properties = Properties()
-    val configFile = File("playtime.properties")
+val configFile = File("playtime.properties")
 
-    if (configFile.exists()) {
-        properties.load(configFile.inputStream())
+fun setPlaytime(key: UUID, value: Int) {
+    val properties = Properties().apply {
+        if (configFile.exists()) {
+            configFile.inputStream().use { load(it) }
+        }
+        setProperty(key.toString(), value.toString())
     }
 
-    properties.setProperty(key.toString(), value.toString())
-    properties.store(configFile.outputStream(), null)
+    configFile.outputStream().use {
+        properties.store(it, "Playtime")
+    }
 }
-
 
 fun getPlayValue(key: UUID): Int? {
     val properties = Properties()
-    val configFile = File("playtime.properties")
 
     return if (configFile.exists()) {
-        properties.load(configFile.inputStream())
-        properties.getProperty(key.toString()).toInt()
+        configFile.inputStream().use {
+            properties.load(it)
+        }
+        properties.getProperty(key.toString())?.toInt()
     } else {
         null
     }
-}
-
-fun playtime(player: ServerPlayerEntity) {
-
 }

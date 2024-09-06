@@ -21,8 +21,17 @@ public class PlayerManagerMixin {
     @Inject(method = "onPlayerConnect", at = @At("HEAD"), cancellable = true)
     public void onPlayerConnect(ClientConnection connection, ServerPlayerEntity player, ConnectedClientData clientData, CallbackInfo ci) {
         UUID uuid = player.getUuid();
-        if (PlayTimeKt.getPlayValue(player.getUuid()) == null) {
-            PlayTimeKt.savePlayConfig(player.getUuid(), 200);
+        Integer value = PlayTimeKt.getPlayValue(uuid);
+        if (value == null) {
+            System.out.println("null time");
+            PlayTimeKt.setPlaytime(uuid, 1000);
+        }
+        System.out.println(uuid);
+
+        System.out.println(PlayTimeKt.getPlayValue(uuid));
+        if (PlayTimeKt.getPlayValue(uuid) == null) {
+            PlayTimeKt.setPlaytime(uuid, 1000);
+            System.out.println(PlayTimeKt.getPlayValue(uuid));
         }
         if (PlayTimeKt.getPlayValue(uuid) == 0) {
             connection.disconnect(Text.literal("You don't have any time left for the week!"));

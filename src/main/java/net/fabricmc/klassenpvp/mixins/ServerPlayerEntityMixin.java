@@ -34,11 +34,14 @@ public class ServerPlayerEntityMixin {
     public void onTick(CallbackInfo info) {
         ServerPlayerEntity player = (ServerPlayerEntity) (Object) this;
         UUID uuid = player.getUuid();
+        if (PlayTimeKt.getPlayValue(uuid) == 200) {
+            player.sendMessage(Text.literal("Du wirst in 10 Sekunden gekickt!"));
+        }
         if (PlayTimeKt.getPlayValue(uuid) == 0) {
             player.networkHandler.disconnect(Text.literal("You don't have any time left for the week!"));
         }
         if (PlayTimeKt.getPlayValue(uuid) != 0) {
-            PlayTimeKt.savePlayConfig(uuid, PlayTimeKt.getPlayValue(uuid) - 1);
+            PlayTimeKt.setPlaytime(uuid, PlayTimeKt.getPlayValue(uuid) - 1);
         }
     }
 }
