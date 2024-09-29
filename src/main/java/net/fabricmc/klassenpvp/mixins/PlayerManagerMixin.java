@@ -24,13 +24,13 @@ public class PlayerManagerMixin {
         Integer value = PlayTimeKt.getPlayValue(uuid);
         if (value == null) {
             System.out.println("null time");
-            PlayTimeKt.setPlaytime(uuid, 1000);
+            PlayTimeKt.setPlaytime(uuid, 504000);
         }
         System.out.println(uuid);
 
         System.out.println(PlayTimeKt.getPlayValue(uuid));
         if (PlayTimeKt.getPlayValue(uuid) == null) {
-            PlayTimeKt.setPlaytime(uuid, 1000);
+            PlayTimeKt.setPlaytime(uuid, 504000);
             System.out.println(PlayTimeKt.getPlayValue(uuid));
         }
         if (PlayTimeKt.getPlayValue(uuid) == 0) {
