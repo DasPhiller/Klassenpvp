@@ -2,16 +2,33 @@ package net.fabricmc.example.uti
 
 import kotlinx.coroutines.cancel
 import net.fabricmc.example.lives.getConfigValue
+import net.fabricmc.example.playtime.getPlayValue
 import net.minecraft.server.network.ServerPlayerEntity
+import net.silkmc.silk.core.kotlin.ticks
 import net.silkmc.silk.core.task.infiniteMcCoroutineTask
 import net.silkmc.silk.core.text.literalText
+import kotlin.time.Duration.Companion.days
+import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.seconds
+import kotlin.time.DurationUnit
+import kotlin.time.toDuration
 
 fun sendActionBar(player: ServerPlayerEntity) {
     infiniteMcCoroutineTask(true, period = 1.seconds) {
-        player.sendMessage(literalText("${getConfigValue(player.uuid)} ♥") {
-            color = 0xff0000
-        }, true)
+        val ticks = getPlayValue(player.uuid)?.div(20)?.seconds ?: return@infiniteMcCoroutineTask
+        player.sendMessage(literalText {
+            text("${getConfigValue(player.uuid)} ♥") {
+                color = 0xFF5555
+            }
+            text(" | ") {
+                color = 0xAAAAAA
+                bold = false
+            }
+            text("Zeit: $ticks") {
+                color = 0x5555FF
+            }
+        }, true
+        )
         if (player.isDisconnected) {
             cancel()
         }

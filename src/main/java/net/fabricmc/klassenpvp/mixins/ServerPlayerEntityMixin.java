@@ -25,6 +25,7 @@ public class ServerPlayerEntityMixin {
                 KlassenSMPKt.banPlayer(player);
             }
             PlayerLivesKt.saveConfig(uuid, lives - 1);
+            PlayerLivesKt.sendMessage(player);
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }
