@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm")
-    id("fabric-loom")
+    kotlin("jvm") version "2.0.20"
+    id("fabric-loom") version "1.6-SNAPSHOT"
     `maven-publish`
     java
 }
@@ -25,10 +25,6 @@ dependencies {
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api_version")}")
     modImplementation("net.silkmc:silk-core:1.10.7")
     modImplementation("net.silkmc:silk-commands:1.10.7")
-}
-
-loom {
-    serverOnlyMinecraftJar()
 }
 
 tasks {

@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "modid",
   "version": "${version}",
-
   "name": "Example Mod",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
@@ -12,29 +11,33 @@
     "homepage": "https://fabricmc.net/",
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
-
   "license": "CC0-1.0",
   "icon": "assets/modid/icon.png",
-
   "environment": "*",
   "entrypoints": {
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "net.fabricmc.example.client.ClientInit"
+      }
+    ],
     "server": [
       {
         "adapter": "kotlin",
-        "value": "net.fabricmc.example.KlassenSMP"
+        "value": "net.fabricmc.example.server.ServerInit"
       }
     ]
   },
   "mixins": [
     "modid.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=${loader_version}",
-    "fabric-api": "*",
+    "fabric-api": "0.102.0+1.21",
     "minecraft": "~${minecraft_version}",
     "java": ">=21",
-    "fabric-language-kotlin": ">=${fabric_kotlin_version}"
+    "fabric-language-kotlin": ">=${fabric_kotlin_version}",
+    "silk-core": "1.10.7"
   },
   "suggests": {
     "another-mod": "*"

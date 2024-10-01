@@ -1,4 +1,4 @@
-package net.fabricmc.example.lives
+package net.fabricmc.example.server.lives
 
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.SoundCategory

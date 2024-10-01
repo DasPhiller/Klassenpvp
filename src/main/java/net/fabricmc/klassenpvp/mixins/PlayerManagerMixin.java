@@ -1,8 +1,9 @@
 package net.fabricmc.klassenpvp.mixins;
 
-import net.fabricmc.example.lives.PlayerLivesKt;
-import net.fabricmc.example.playtime.PlayTimeKt;
-import net.fabricmc.example.uti.UtilsKt;
+import net.fabricmc.example.server.PacketSender;
+import net.fabricmc.example.server.lives.PlayerLivesKt;
+import net.fabricmc.example.server.playtime.PlayTimeKt;
+import net.fabricmc.example.server.uti.UtilsKt;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ConnectedClientData;
@@ -27,7 +28,7 @@ public class PlayerManagerMixin {
             PlayTimeKt.setPlaytime(uuid, 504000);
         }
         System.out.println(uuid);
-
+        new PacketSender().send(player, PlayerLivesKt.getConfigValue(uuid));
         System.out.println(PlayTimeKt.getPlayValue(uuid));
         if (PlayTimeKt.getPlayValue(uuid) == null) {
             PlayTimeKt.setPlaytime(uuid, 504000);

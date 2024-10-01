@@ -1,9 +1,9 @@
-package net.fabricmc.example
+package net.fabricmc.example.server
 
 import net.fabricmc.api.DedicatedServerModInitializer
-import net.fabricmc.example.commands.livesCommand
-import net.fabricmc.example.commands.playtimeCommand
-import net.fabricmc.example.commands.testCommand
+import net.fabricmc.example.server.commands.livesCommand
+import net.fabricmc.example.server.commands.playtimeCommand
+import net.fabricmc.example.server.commands.testCommand
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
 import net.minecraft.server.BannedPlayerEntry
 import net.minecraft.server.network.ServerPlayerEntity
@@ -13,9 +13,9 @@ import java.io.File
 import java.time.DayOfWeek.TUESDAY
 import java.time.LocalDate
 
-class KlassenSMP : DedicatedServerModInitializer {
-
+class ServerInit : DedicatedServerModInitializer {
     override fun onInitializeServer() {
+        println("Server Initialized")
         livesCommand.setupRegistrationCallback()
         playtimeCommand.setupRegistrationCallback()
         testCommand.setupRegistrationCallback()
@@ -27,6 +27,7 @@ class KlassenSMP : DedicatedServerModInitializer {
             }
         }
     }
+
 
 }
 

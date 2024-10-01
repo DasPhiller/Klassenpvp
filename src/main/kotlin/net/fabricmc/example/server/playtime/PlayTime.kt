@@ -1,4 +1,4 @@
-package net.fabricmc.example.playtime
+package net.fabricmc.example.server.playtime
 
 import java.io.File
 import java.util.*

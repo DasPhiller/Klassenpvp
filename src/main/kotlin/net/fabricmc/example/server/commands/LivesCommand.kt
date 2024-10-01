@@ -1,7 +1,7 @@
-package net.fabricmc.example.commands
+package net.fabricmc.example.server.commands
 
-import net.fabricmc.example.lives.getConfigValue
-import net.fabricmc.example.lives.saveConfig
+import net.fabricmc.example.server.lives.getConfigValue
+import net.fabricmc.example.server.lives.saveConfig
 import net.silkmc.silk.commands.command
 import net.silkmc.silk.core.Silk
 import net.silkmc.silk.core.text.literalText

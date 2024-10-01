@@ -1,8 +1,7 @@
-package net.fabricmc.example.commands
+package net.fabricmc.example.server.commands
 
-import net.fabricmc.example.playtime.setPlaytime
+import net.fabricmc.example.server.playtime.setPlaytime
 import net.silkmc.silk.commands.command
-import net.silkmc.silk.core.Silk
 
 val playtimeCommand = command("playtime") {
     requiresPermissionLevel(4)

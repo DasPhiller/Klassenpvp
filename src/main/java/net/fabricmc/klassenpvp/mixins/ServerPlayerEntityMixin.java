@@ -1,8 +1,9 @@
 package net.fabricmc.klassenpvp.mixins;
 
-import net.fabricmc.example.KlassenSMPKt;
-import net.fabricmc.example.lives.PlayerLivesKt;
-import net.fabricmc.example.playtime.PlayTimeKt;
+import net.fabricmc.example.server.ServerInitKt;
+import net.fabricmc.example.server.PacketSender;
+import net.fabricmc.example.server.lives.PlayerLivesKt;
+import net.fabricmc.example.server.playtime.PlayTimeKt;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,10 +23,11 @@ public class ServerPlayerEntityMixin {
         try {
             int lives = PlayerLivesKt.getConfigValue(uuid);
             if (lives == 1) {
-                KlassenSMPKt.banPlayer(player);
+                ServerInitKt.banPlayer(player);
             }
             PlayerLivesKt.saveConfig(uuid, lives - 1);
             PlayerLivesKt.sendMessage(player);
+            new PacketSender().send(player, lives);
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }

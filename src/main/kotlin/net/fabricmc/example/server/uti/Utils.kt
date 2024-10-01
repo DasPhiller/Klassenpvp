@@ -1,8 +1,8 @@
-package net.fabricmc.example.uti
+package net.fabricmc.example.server.uti
 
 import kotlinx.coroutines.cancel
-import net.fabricmc.example.lives.getConfigValue
-import net.fabricmc.example.playtime.getPlayValue
+import net.fabricmc.example.server.lives.getConfigValue
+import net.fabricmc.example.server.playtime.getPlayValue
 import net.minecraft.server.network.ServerPlayerEntity
 import net.silkmc.silk.core.kotlin.ticks
 import net.silkmc.silk.core.task.infiniteMcCoroutineTask

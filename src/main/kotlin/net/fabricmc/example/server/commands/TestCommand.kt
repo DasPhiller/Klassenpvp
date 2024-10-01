@@ -1,4 +1,4 @@
-package net.fabricmc.example.commands
+package net.fabricmc.example.server.commands
 
 import net.silkmc.silk.commands.command
 import net.silkmc.silk.core.text.literalText

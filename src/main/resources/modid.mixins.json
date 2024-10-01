@@ -3,11 +3,12 @@
   "minVersion": "0.8",
   "package": "net.fabricmc.klassenpvp.mixins",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "PlayerManagerMixin"
+  "client": [
+
   ],
   "server": [
-    "ServerPlayerEntityMixin"
+    "ServerPlayerEntityMixin",
+    "PlayerManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
