@@ -28,7 +28,7 @@ public class PlayerManagerMixin {
             PlayTimeKt.setPlaytime(uuid, 504000);
         }
         System.out.println(uuid);
-        new PacketSender().send(player, PlayerLivesKt.getConfigValue(uuid));
+        //new PacketSender().send(player, PlayerLivesKt.getConfigValue(uuid));
         System.out.println(PlayTimeKt.getPlayValue(uuid));
         if (PlayTimeKt.getPlayValue(uuid) == null) {
             PlayTimeKt.setPlaytime(uuid, 504000);

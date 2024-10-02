@@ -4,14 +4,9 @@ import kotlinx.coroutines.cancel
 import net.fabricmc.example.server.lives.getConfigValue
 import net.fabricmc.example.server.playtime.getPlayValue
 import net.minecraft.server.network.ServerPlayerEntity
-import net.silkmc.silk.core.kotlin.ticks
 import net.silkmc.silk.core.task.infiniteMcCoroutineTask
 import net.silkmc.silk.core.text.literalText
-import kotlin.time.Duration.Companion.days
-import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.seconds
-import kotlin.time.DurationUnit
-import kotlin.time.toDuration
 
 fun sendActionBar(player: ServerPlayerEntity) {
     infiniteMcCoroutineTask(true, period = 1.seconds) {

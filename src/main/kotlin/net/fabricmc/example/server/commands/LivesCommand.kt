@@ -13,7 +13,7 @@ val livesCommand = command("lives") {
         val uuid = source.player?.uuid ?: return@runs
         source.player?.sendText(literalText("Deine Lebenspunkte sind ${getConfigValue(uuid)}"))
     }
-    argument<Int>("amount") { amount ->
+    argument<Double>("amount") { amount ->
         argument<String>("player") { target ->
             runs {
                 val server = source.player?.server ?: return@runs
