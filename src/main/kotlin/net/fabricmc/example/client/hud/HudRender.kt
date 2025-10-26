@@ -15,9 +15,7 @@ object HudRender {
 
     fun render(context: DrawContext, player: PlayerEntity) {
         context.matrices.push()
-        val color = 0xFFFFFF
         val ticks = getPlayValue(player.uuid)?.div(20)?.seconds ?: return
-        val rgb = Color(color)
         RenderSystem.disableDepthTest()
         context.drawText(minecraft.textRenderer, "${getConfigValue(player.uuid)} ♥", 798, 0, 0xFF0000, true)
         context.drawText(minecraft.textRenderer, ticks.toString(), 798, 10, 0x0000FF, true)
