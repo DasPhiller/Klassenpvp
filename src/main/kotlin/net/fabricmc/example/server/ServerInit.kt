@@ -5,6 +5,8 @@ import net.fabricmc.example.server.commands.livesCommand
 import net.fabricmc.example.server.commands.playtimeCommand
 import net.fabricmc.example.server.commands.testCommand
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry
+import net.fabricmc.klassenpvp.server.LivesPayload
 import net.minecraft.server.BannedPlayerEntry
 import net.minecraft.server.network.ServerPlayerEntity
 import net.silkmc.silk.commands.registration.setupRegistrationCallback
@@ -19,6 +21,7 @@ class ServerInit : DedicatedServerModInitializer {
         livesCommand.setupRegistrationCallback()
         playtimeCommand.setupRegistrationCallback()
         testCommand.setupRegistrationCallback()
+        PayloadTypeRegistry.playS2C().register(LivesPayload.ID, LivesPayload.CODEC)
         ServerLifecycleEvents.SERVER_STARTING.register {
             val dayOfWeek = LocalDate.now().dayOfWeek
             if (dayOfWeek == TUESDAY) {

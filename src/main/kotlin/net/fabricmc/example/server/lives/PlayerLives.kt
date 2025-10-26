@@ -14,7 +14,7 @@ import java.util.UUID
 private val configFile = File("config.properties")
 
 
-fun saveConfig(key: UUID, value: Double) {
+fun saveConfig(key: UUID, value: Int) {
     val properties = Properties().apply {
         if (configFile.exists()) {
             configFile.inputStream().use { load(it) }
@@ -27,20 +27,20 @@ fun saveConfig(key: UUID, value: Double) {
 }
 
 
-fun getConfigValue(key: UUID): Double? {
+fun getConfigValue(key: UUID): Int? {
     val properties = Properties()
 
     return if (configFile.exists()) {
         configFile.inputStream().use {
             properties.load(it)
         }
-        properties.getProperty(key.toString())?.toDouble()
+        properties.getProperty(key.toString())?.toInt()
     } else {
         null
     }
 }
 
-fun sendMessage(player: ServerPlayerEntity, lives: Double) {
+fun sendMessage(player: ServerPlayerEntity, lives: Int) {
     player.sendText(literalText("-$lives ♥") {
         color = 0xAA0000
         bold = false

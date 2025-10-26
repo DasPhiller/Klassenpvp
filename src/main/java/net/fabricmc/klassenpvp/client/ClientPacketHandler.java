@@ -11,7 +11,6 @@ public class ClientPacketHandler {
         ClientPlayNetworking.registerGlobalReceiver(LivesPayload.ID, (payload, context) -> {
 
             context.client().execute(() -> {
-                System.out.println("Testx2");
             });
         });
     }

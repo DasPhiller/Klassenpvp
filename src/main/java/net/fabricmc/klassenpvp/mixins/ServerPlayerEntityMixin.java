@@ -25,7 +25,7 @@ public class ServerPlayerEntityMixin {
             ServerPlayerEntity player = (ServerPlayerEntity) (Object) this;
             UUID uuid = player.getUuid();
             try {
-                double lives = PlayerLivesKt.getConfigValue(uuid);
+                int lives = PlayerLivesKt.getConfigValue(uuid);
                 if (lives == 1 || lives == 0.5) {
                     ServerInitKt.banPlayer(player);
                 }
@@ -46,7 +46,7 @@ public class ServerPlayerEntityMixin {
             UUID uuid = player.getUuid();
             if (Damage.INSTANCE.isInCombat(player)) {
                 try {
-                    double lives = PlayerLivesKt.getConfigValue(uuid);
+                    int lives = PlayerLivesKt.getConfigValue(uuid);
                     if (lives == 1) {
                         ServerInitKt.banPlayer(player);
                     }
@@ -59,12 +59,12 @@ public class ServerPlayerEntityMixin {
             } else {
                 try {
 
-                    double lives = PlayerLivesKt.getConfigValue(uuid);
-                    if (lives == 0.5) {
+                    int lives = PlayerLivesKt.getConfigValue(uuid);
+                    if (lives == 1) {
                         ServerInitKt.banPlayer(player);
                     }
-                    PlayerLivesKt.saveConfig(uuid, lives - 0.5);
-                    PlayerLivesKt.sendMessage(player, 0.5);
+                    PlayerLivesKt.saveConfig(uuid, lives - 1);
+                    PlayerLivesKt.sendMessage(player, 1);
                     //new PacketSender().send(player, lives);
                 } catch (NullPointerException e) {
                     System.out.println(e.getMessage());
